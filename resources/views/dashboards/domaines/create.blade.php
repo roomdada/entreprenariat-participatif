@@ -8,6 +8,6 @@
   </x-slot>
   </x-section-header>
   <div class="bg-white px-6 py-12 rounded-md shadow-lg  border-2">
-      <livewire:domaines.create-domaine-form />
+      <livewire:projects.create-projects-form />
   </div>
 </x-app-layout>

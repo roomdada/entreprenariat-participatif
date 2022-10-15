@@ -19,6 +19,12 @@ class ProjectController extends Controller
     }
 
 
+    public function create()
+    {
+        return view('dashboards.projects.create');
+    }
+
+
     /**
      * Display the specified resource.
      *

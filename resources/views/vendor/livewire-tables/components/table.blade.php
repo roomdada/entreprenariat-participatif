@@ -24,7 +24,7 @@
         }}>
             <thead {{
                 $attributes->merge($customAttributes['thead'])
-                    ->class(['bg-gray-50' => $customAttributes['thead']['default'] ?? true])
+                    ->class(['bg-primary' => $customAttributes['thead']['default'] ?? true])
                     ->except('default')
             }}>
                 <tr>

@@ -19,23 +19,23 @@ use App\Http\Controllers\Dashboards\ProjectController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 })->name('home');
 
 Route::view('tous-nos-projets', 'projects')->name('projects');
-Route::get('projet/{project}', fn(Project $project) => view('project-details', compact('project')))->name('project.show');
+Route::get('projet/{project}', fn (Project $project) => view('project-details', compact('project')))->name('project.show');
 Route::view('a-propos', 'about')->name('about');
 Route::view('faq', 'faq')->name('faq');
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('dashboard')->middleware('auth')->group(function () {
+  Route::view('/', 'dashboard')->name('dashboard');
+  Route::resource('users', UserController::class);
+  Route::resource('domaines', DomaineController::class);
+  Route::resource('projects', ProjectController::class);
+  Route::get('profile', AccountController::class)->name('profile');
+  Route::view('collaborators', 'dashboards.users.collaborators')->name('collaborators.index');
+});
 
-Route::resource('users', UserController::class);
-Route::resource('domaines', DomaineController::class);
-Route::resource('projects', ProjectController::class);
-Route::get('profile', AccountController::class)->name('profile');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

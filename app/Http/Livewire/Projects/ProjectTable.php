@@ -39,6 +39,12 @@ class ProjectTable extends DataTableComponent
 
   public function builder(): Builder
   {
+    if(auth()->user()->isInvestor()){
+      return auth()->user()->myProjectsQuery();
+    }
+    if(auth()->user()->isProjectOwner()) {
+      return Project::whereUserId(auth()->id())->with('domaine')->latest();
+    }
     return Project::query()->with('projectOwner', 'domaine')->latest();
   }
 }

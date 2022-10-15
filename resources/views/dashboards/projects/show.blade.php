@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-section-header title="Mon compte" />
+    <x-section-header title="Détails du projet" />
     <div class="bg-white px-6 py-4 rounded-md shadow-lg  border-2">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="mt-5 md:mt-0 md:col-span-3">

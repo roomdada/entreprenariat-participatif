@@ -1,3 +1,3 @@
-<div>
-    {{-- Close your eyes. Count to one. That is how long forever feels. --}}
-</div>
+<x-statistic label='Projets' value='{{ $count_projects }}' icon='todo' color='primary' />
+<x-statistic label='Domaines' value='{{ $count_reports }}' icon='cat' color='secondary' />
+<x-statistic label='Utilisateurs' value='{{ $count_collaborators }}' />

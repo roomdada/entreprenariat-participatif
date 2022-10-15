@@ -3,7 +3,7 @@
     <section class='container mt-10'>
         <div class="flex flex-col overflow-y-auto md:flex-row border-2 rounded-lg">
             <div class="h-32 md:h-auto md:w-1/2">
-                <img aria-hidden="true" class="object-cover w-full h-full" src="https://dh-ui.s3.amazonaws.com/assets/team.png"
+                <img aria-hidden="true" class="object-cover w-full h-full" src="{{ asset('register.svg') }}"
                     alt="Office" />
             </div>
             <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">

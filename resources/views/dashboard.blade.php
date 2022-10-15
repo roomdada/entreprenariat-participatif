@@ -4,6 +4,10 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8">
             @if (auth()->user()->isAdmin())
                 <livewire:dashboards.admin-dashboard />
+            @elseif(auth()->user()->isProjectOwner())
+                <livewire:dashboards.project-owner-dashboard />
+            @elseif(auth()->user()->isInvestor())
+                <livewire:dashboards.investor-dashboard />
             @endif
         </div>
     </div>

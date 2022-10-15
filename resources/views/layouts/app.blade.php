@@ -128,16 +128,15 @@
         <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
-                <div class="flex items-center flex-shrink-0 px-4">
-                    <img class="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-300-mark-white-text.svg"
-                        alt="Workflow">
+                <div class="text-center text-xl text-white px-4">
+                    {{ config('app.name') }}
                 </div>
                 <div class="mt-5 flex-1 flex flex-col">
                     <nav class="flex-1 px-2 pb-4 space-y-1">
                         <x-nav-link href="{{ route('dashboard') }}" icon="grid" :active="request()->routeIs('dashboard')">
                             Tableau de bord
                         </x-nav-link>
+
                         @if (auth()->user()->isAdmin())
                             <x-nav-link href="{{ route('users.index') }}" icon="grid" :active="request()->routeIs('users.*')">
                                 Utilisateurs
@@ -145,23 +144,22 @@
                             <x-nav-link href="{{ route('domaines.index') }}" icon="grid" :active="request()->routeIs('domaines.*')">
                                 Domaines
                             </x-nav-link>
-                            <x-nav-link href="{{ route('projects.index') }}" icon="grid" :active="request()->routeIs('projects.*')">
-                                Projets
-                            </x-nav-link>
                         @endif
+                        <x-nav-link href="{{ route('projects.index') }}" icon="grid" :active="request()->routeIs('projects.*')">
+                            Projets
+                        </x-nav-link>
                         @if (auth()->user()->isProjectOwner())
-                            <x-nav-link href="{{ route('projects.index') }}" icon="grid" :active="request()->routeIs('projects.*')">
-                                Projets
-                            </x-nav-link>
-                            <x-nav-link href="{{ route('projects.index') }}" icon="users" :active="request()->routeIs('projects.*')">
+                            <x-nav-link href="{{ route('collaborators.index') }}" icon="users" :active="request()->routeIs('collaborators.index')">
                                 Collaborateurs
                             </x-nav-link>
                         @endif
-                        @if(auth()->user()->isInvestor())
-                            <x-nav-link href="{{ route('projects.index') }}" icon="grid" :active="request()->routeIs('projects.*')">
-                                Projets
+                        @if (auth()->user()->isInvestor())
+                            <x-nav-link href="{{ route('projects') }}" icon="users" :active="request()->routeIs('collaborators.index')">
+                                Consulter projets
                             </x-nav-link>
                         @endif
+
+
                     </nav>
                 </div>
             </div>
@@ -201,8 +199,7 @@
                                     class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
-                                    <img class="h-8 w-8 rounded-full"
-                                        src="{{ auth()->user()->avatar }}"
+                                    <img class="h-8 w-8 rounded-full" src="{{ auth()->user()->avatar }}"
                                         alt="">
                                 </button>
                             </div>
@@ -212,8 +209,8 @@
                                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                                 tabindex="-1">
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                                <a href="{{ route('profile') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                    tabindex="-1" id="user-menu-item-0">Mon compte</a>
+                                <a href="{{ route('profile') }}" class="block px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-0">Mon compte</a>
                                 <a href="#"
                                     onclick="event.preventDefault(); document.getElementById('logout').submit();"
                                     class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
